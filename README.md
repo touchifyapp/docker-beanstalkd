@@ -29,8 +29,8 @@ You can configure the beanstalkd instance using environment variables:
 | BEANSTALKD_FSYNC_DISABLE  |           | Set to `1` to disable `fsync`
 | BEANSTALKD_LOG_ENABLE     |           | Set to `1` to enable write-head log
 | BEANSTALKD_LOG_DIR        | `/var/cache/beanstalkd` | Write-ahead log directory
-| BEANSTALKD_LOG_MAX_SIZE   | 65535     | Set the maximum job size in bytes. *max allowed is 1073741824 bytes*
-| BEANSTALKD_JOB_MAX_SIZE   | 10485760  | Set the size of each write-ahead log. *Will be rounded up to a multiple of 4096 bytes*
+| BEANSTALKD_LOG_SIZE       | 10485760  | Set the size of each write-ahead log. *Will be rounded up to a multiple of 4096 bytes*
+| BEANSTALKD_JOB_MAX_SIZE   | 65535     | Set the maximum job size in bytes. *max allowed is 1073741824 bytes*
 | BEANSTALKD_VERBOSE        |           | Set to `1` to enable verbosity
 
 ## Command line options
