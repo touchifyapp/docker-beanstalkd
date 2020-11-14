@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# $IMAGE_NAME is injected during Docker automated build 
+IMAGE_NAME=${IMAGE_NAME:="touchify/beanstalkd"}
+
+# Versioning
+BEANSTALKD_VERSION=${BEANSTALKD_VERSION:="1.12"}
+ALPINE_VERSION=${ALPINE_VERSION:="3.12"}
+ALPINE_REPOSITORY=${ALPINE_REPOSITORY:="edge/community"}
+
+# Labelling
+BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+GIT_SHA1=`git rev-parse --short HEAD`
+
+# Build docker image
+docker build \
+    --build-arg BEANSTALKD_VERSION=${BEANSTALKD_VERSION} \
+    --build-arg ALPINE_VERSION=${ALPINE_VERSION} \
+    --build-arg ALPINE_REPOSITORY=${ALPINE_REPOSITORY} \
+    --build-arg BUILD_DATE=${BUILD_DATE} \
+    --build-arg VCS_REF=${GIT_SHA1} \
+    -t $IMAGE_NAME .
